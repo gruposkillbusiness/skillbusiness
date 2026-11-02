@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendário Novembro 2025</title>
+    <title>Calendário Novembro 2025 com Notas</title>
     <!-- Importa a fonte Montserrat do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
 
         .calendar-container {
             width: 100%; /* Largura total em dispositivos móveis */
-            max-width: 420px; /* Largura máxima para telas maiores */
+            max-width: 450px; /* Largura máxima para telas maiores, um pouco maior para o texto */
             padding: 20px;
             border-radius: 12px; /* Cantos arredondados */
             background-color: #1a1a1a; /* Um tom de preto ligeiramente mais claro para o fundo do calendário */
@@ -59,26 +59,50 @@
 
         .calendar-weekdays div {
             font-weight: 700;
-            padding: 12px 0;
+            padding: 10px 0;
             font-size: 0.9rem;
             color: #bbb; /* Cor para os dias da semana */
         }
 
         .calendar-days .day {
-            padding: 15px 0;
+            min-height: 80px; /* Altura mínima para acomodar número e texto */
+            padding: 8px; /* Padding interno para o conteúdo do dia */
             border-radius: 8px;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Conteúdo empilhado verticalmente */
+            justify-content: flex-start; /* Alinha o número do dia ao topo */
             align-items: center;
             font-size: 1rem;
             background-color: #333; /* Fundo padrão para os dias */
             transition: background-color 0.2s ease; /* Transição suave no hover */
+            overflow: hidden; /* Garante que o texto não "transborde" se for muito longo */
         }
 
         .calendar-days .day:hover {
             background-color: #555; /* Fundo mais claro ao passar o mouse */
             cursor: pointer;
         }
+
+        .calendar-days .day-number {
+            font-size: 1.2rem; /* Tamanho do número do dia */
+            font-weight: 700;
+            margin-bottom: 5px; /* Espaço entre o número e o texto */
+            color: #fff;
+        }
+
+        .calendar-days .day-text {
+            font-size: 0.75rem; /* Tamanho menor para o texto do dia */
+            color: #ccc; /* Cor um pouco mais suave para o texto */
+            line-height: 1.2; /* Espaçamento entre linhas */
+            text-align: center;
+            flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+            overflow: hidden; /* Esconde o excesso de texto */
+            text-overflow: ellipsis; /* Adiciona "..." se o texto for cortado */
+            display: -webkit-box; /* Para controlar o número de linhas */
+            -webkit-line-clamp: 3; /* Limita o texto a 3 linhas */
+            -webkit-box-orient: vertical;
+        }
+
 
         .calendar-days .empty {
             visibility: hidden; /* Células vazias para preenchimento */
@@ -89,8 +113,12 @@
         .pink-element {
             background-color: #ff0068; /* Fundo rosa */
             color: #fff; /* Texto branco */
-            font-weight: 700;
             box-shadow: 0 2px 8px rgba(255, 0, 104, 0.4); /* Sombra rosa para destacar */
+        }
+
+        .pink-element .day-number,
+        .pink-element .day-text {
+            color: #fff; /* Garante que o texto e o número dentro do elemento rosa sejam brancos */
         }
 
         .pink-element:hover {
@@ -101,6 +129,7 @@
         @media (min-width: 600px) {
             .calendar-container {
                 padding: 30px;
+                max-width: 600px; /* Aumenta a largura máxima em telas maiores */
             }
 
             .calendar-header {
@@ -112,7 +141,16 @@
             }
 
             .calendar-days .day {
-                font-size: 1.1rem;
+                min-height: 100px; /* Altura um pouco maior em telas grandes */
+                padding: 10px;
+            }
+
+            .calendar-days .day-number {
+                font-size: 1.4rem;
+            }
+
+            .calendar-days .day-text {
+                font-size: 0.85rem; /* Texto ligeiramente maior em telas grandes */
             }
         }
     </style>
@@ -144,36 +182,126 @@
             <div class="empty"></div>
             
             <!-- Dias do mês -->
-            <div class="day pink-element">1</div> <!-- Sábado - Destaque em rosa -->
-            <div class="day">2</div>
-            <div class="day">3</div>
-            <div class="day">4</div>
-            <div class="day">5</div>
-            <div class="day">6</div>
-            <div class="day">7</div>
-            <div class="day">8</div>
-            <div class="day">9</div>
-            <div class="day">10</div>
-            <div class="day">11</div>
-            <div class="day">12</div>
-            <div class="day">13</div>
-            <div class="day">14</div>
-            <div class="day">15</div>
-            <div class="day">16</div>
-            <div class="day">17</div>
-            <div class="day">18</div>
-            <div class="day">19</div>
-            <div class="day">20</div>
-            <div class="day">21</div>
-            <div class="day">22</div>
-            <div class="day">23</div>
-            <div class="day">24</div>
-            <div class="day">25</div>
-            <div class="day">26</div>
-            <div class="day">27</div>
-            <div class="day">28</div>
-            <div class="day">29</div>
-            <div class="day pink-element">30</div> <!-- Domingo - Destaque em rosa -->
+            <div class="day pink-element">
+                <div class="day-number">1</div>
+                <div class="day-text"></div>
+            </div>
+            <div class="day">
+                <div class="day-number">2</div>
+                <div class="day-text"></div>
+            </div>
+            <div class="day">
+                <div class="day-number">3</div>
+                <div class="day-text">Continue com suas anotações importantes.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">4</div>
+                <div class="day-text">Aqui vai o texto para o dia 04. Planeje sua semana fitness!</div>
+            </div>
+            <div class="day">
+                <div class="day-number">5</div>
+                <div class="day-text">Aqui vai o texto para o dia 05. Não se esqueça da sua meta diária.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">6</div>
+                <div class="day-text">Aqui vai o texto para o dia 06. Revise os resultados e ajuste seus planos.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">7</div>
+                <div class="day-text">Aqui vai o texto para o dia 07. Encontre inspiração para ir além.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">8</div>
+                <div class="day-text">Aqui vai o texto para o dia 08. Celebre suas pequenas vitórias hoje.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">9</div>
+                <div class="day-text">Aqui vai o texto para o dia 09. Descanse e recupere suas energias.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">10</div>
+                <div class="day-text">Aqui vai o texto para o dia 10. Novos desafios esperam por você.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">11</div>
+                <div class="day-text">Aqui vai o texto para o dia 11. Mantenha o foco em seus objetivos.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">12</div>
+                <div class="day-text">Aqui vai o texto para o dia 12. Hidrate-se e alimente-se bem.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">13</div>
+                <div class="day-text">Aqui vai o texto para o dia 13. Dia de treinamento intenso e produtivo.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">14</div>
+                <div class="day-text">Aqui vai o texto para o dia 14. Avalie o progresso e faça ajustes.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">15</div>
+                <div class="day-text">Aqui vai o texto para o dia 15. Motivação e disciplina andam juntos.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">16</div>
+                <div class="day-text">Aqui vai o texto para o dia 16. Tempo de relaxar e se preparar.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">17</div>
+                <div class="day-text">Aqui vai o texto para o dia 17. Desafie-se a cada novo treino.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">18</div>
+                <div class="day-text">Aqui vai o texto para o dia 18. Consistência é a chave para o sucesso.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">19</div>
+                <div class="day-text">Aqui vai o texto para o dia 19. Cuide do seu corpo e da sua mente.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">20</div>
+                <div class="day-text">Aqui vai o texto para o dia 20. Ultrapasse seus limites com segurança.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">21</div>
+                <div class="day-text">Aqui vai o texto para o dia 21. Pequenos hábitos geram grandes resultados.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">22</div>
+                <div class="day-text">Aqui vai o texto para o dia 22. Encerre a semana com energia total.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">23</div>
+                <div class="day-text">Aqui vai o texto para o dia 23. Dedique-se ao seu bem-estar.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">24</div>
+                <div class="day-text">Aqui vai o texto para o dia 24. Comece a semana com foco renovado.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">25</div>
+                <div class="day-text">Aqui vai o texto para o dia 25. Aprenda algo novo para sua saúde.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">26</div>
+                <div class="day-text">Aqui vai o texto para o dia 26. Compartilhe suas conquistas com alegria.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">27</div>
+                <div class="day-text">Aqui vai o texto para o dia 27. Pratique a gratidão e a resiliência.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">28</div>
+                <div class="day-text">Aqui vai o texto para o dia 28. Prepare-se para um final de mês incrível.</div>
+            </div>
+            <div class="day">
+                <div class="day-number">29</div>
+                <div class="day-text">Aqui vai o texto para o dia 29. Finalize seus treinos com sucesso.</div>
+            </div>
+            <div class="day pink-element">
+                <div class="day-number">30</div>
+                <div class="day-text">Aqui vai o texto para o dia 30. Respire fundo e celebre sua jornada!</div>
+            </div>
         </div>
     </div>
 </body>
